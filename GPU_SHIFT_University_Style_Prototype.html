@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#8f1d39" />
+  <meta name="description" content="GPU-SHIFT, an independent research prototype for assessing technological purchase decisions." />
+  <title>GPU-SHIFT | Research prototype</title>
+  <style>
+:root{--red:#991e3a;--red-dark:#75172d;--ink:#23252b;--text:#42464e;--muted:#707781;--line:#d9dce0;--soft:#f5f6f7;--paper:#fff;--width:900px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f8f9fa;color:var(--ink);font:15px/1.52 Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}input,select,button{font:inherit}button{cursor:pointer}a{color:inherit}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #eab8c4;outline-offset:2px}
+.masthead{border-top:5px solid var(--red);background:#fff;border-bottom:1px solid #dcdfe2}.masthead-inner{max-width:1040px;margin:auto;padding:19px 25px;display:flex;align-items:center;justify-content:space-between;gap:12px}.wordmark{display:flex;align-items:center;gap:12px;font-weight:750;text-decoration:none;font-size:20px;letter-spacing:.01em}.brand-square{width:25px;height:25px;border:4px solid var(--red);display:inline-block}.header-right{color:#68707a;font-size:11px;font-weight:700;letter-spacing:.11em}
+.page{max-width:var(--width);padding:0 24px 32px;margin:auto}.intro{padding:49px 0 22px}.eyebrow{font-size:11px;color:var(--red);font-weight:750;letter-spacing:.12em;margin:0 0 12px}.intro h1{font-size:clamp(30px,4vw,41px);line-height:1.13;letter-spacing:-.025em;margin:0 0 12px;font-weight:740}.intro>p:not(.eyebrow){max-width:690px;color:#555a62;font-size:16px;line-height:1.6;margin:0 0 20px}.notice{border-left:4px solid var(--red);background:#fff;padding:14px 17px;color:#5a5f67;font-size:12px;line-height:1.6;max-width:100%;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.form-section,.result-section{background:var(--paper);border:1px solid var(--line);margin:18px 0;padding:29px 32px}.section-heading{display:flex;gap:14px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:19px;margin-bottom:23px}.section-number{background:var(--red);color:white;width:33px;height:33px;display:grid;place-items:center;font-size:14px;font-weight:750;flex-shrink:0}.section-heading h2{font-size:20px;letter-spacing:-.02em;margin:1px 0 4px;line-height:1.35}.section-heading p{color:var(--muted);font-size:13px;margin:0}.scale-guide{display:flex;gap:14px;justify-content:space-between;background:var(--soft);padding:10px 13px;color:#5d626a;font-size:11px;border:1px solid #e6e8ea}
+.psych-group{margin:25px 0 0}.psych-group h3{color:var(--red);font-size:13px;margin:0 0 9px;line-height:1.3}.question{margin:0;display:grid;grid-template-columns:minmax(0,1fr) 235px;gap:12px;align-items:center;border:0;border-top:1px solid #e5e6e8;padding:15px 0}.question legend{float:left;display:flex;gap:10px;padding:0;width:100%;color:var(--text);font-size:13px;line-height:1.5}.q-num{color:#989da3;font-size:11px;margin-top:2px;flex-shrink:0}.choice-row{display:flex;justify-content:space-between;gap:6px}.choice{cursor:pointer;display:block;position:relative}.choice input{position:absolute;opacity:0;width:1px;height:1px}.choice span{display:grid;place-items:center;width:34px;height:34px;border:1px solid #ccd0d5;color:#535963;font-size:12px;background:#fff;transition:.12s}.choice input:checked+span{background:var(--red);border-color:var(--red);color:white;font-weight:750}.choice input:focus-visible+span{outline:3px solid #eab8c4;outline-offset:2px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}.field{display:flex;flex-direction:column;gap:6px}.field>span{color:#454a51;font-size:12px;font-weight:700}.field-full{grid-column:1/-1}.field input,.field select{height:42px;min-width:0;width:100%;border:1px solid #cbd0d5;color:var(--ink);background:#fff;padding:9px 11px;border-radius:0;font-size:13px}.subheading{border-top:1px solid var(--line);margin-top:26px;padding-top:22px}.subheading h3{font-size:16px;margin:0 0 4px}.subheading p{margin:0 0 16px;color:var(--muted);font-size:12px}.option-list{display:grid;gap:11px}.option-card{border:1px solid #d9dde0;background:#fafbfc;padding:15px}.option-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.option-index{font-weight:750;font-size:10px;color:var(--red);letter-spacing:.08em}.remove{border:0;background:transparent;color:#737983;font-size:12px;text-decoration:underline}.remove:hover{color:var(--red)}.option-fields{display:grid;grid-template-columns:minmax(180px,2fr) repeat(4,minmax(65px,1fr));gap:10px}.option-fields .field>span{font-size:10px;font-weight:650}.option-fields .field input{height:39px;font-size:12px;padding:8px}.compatible{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12px;color:#535b65}.compatible input{width:16px;height:16px;accent-color:var(--red)}.secondary-button{color:var(--red);border:1px solid var(--red);background:white;padding:9px 13px;font-size:13px;font-weight:700;margin-top:15px}.secondary-button:hover{background:#fff6f8}.small-note{font-size:11px;color:#7a8088;line-height:1.62;margin:15px 0 0}
+.priorities{border-top:1px solid var(--line)}.priority{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 0;border-bottom:1px solid var(--line)}.priority>span:first-child{display:flex;flex-direction:column;gap:4px}.priority strong{font-size:13px}.priority small{font-size:11px;color:var(--muted)}.priority-entry{white-space:nowrap;font-size:11px;color:var(--muted)}.priority input{height:38px;width:68px;text-align:center;border:1px solid #cbd0d5;margin-right:4px;color:var(--ink)}.primary-button{background:var(--red);border:1px solid var(--red);color:white;font-size:14px;font-weight:700;padding:13px 23px;min-width:230px;margin-top:25px}.primary-button:hover{background:var(--red-dark)}.primary-button span{margin-left:8px}.error{color:#8e2339;border:1px solid #ebc4ce;background:#fff6f8;font-size:12px;padding:12px 13px;margin-top:18px}.result-section{border-top:4px solid var(--red);min-height:170px;scroll-margin-top:20px}.result-label{color:var(--red);font-size:11px;letter-spacing:.08em;font-weight:750}.result-section h2{font-size:25px;line-height:1.27;letter-spacing:-.02em;margin:14px 0 8px}.result-section p{color:#595e66;line-height:1.62;font-size:13px;margin:7px 0}.result-intro{font-size:13px}.result-details{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}.result-details span{font-size:12px;padding:6px 9px;background:#f2f3f5;border:1px solid #e7e8e9;color:#4a4d55}.reflect{margin-top:21px;border-top:1px solid var(--line);padding-top:17px}.reflect h3{font-size:14px;margin:0 0 6px}.result-section .disclaimer{color:#838994;font-size:11px;margin-top:20px}footer{border-top:1px solid #ddd;padding:20px 0;color:#858a91;display:flex;justify-content:space-between;gap:20px;font-size:10px;line-height:1.5}
+@media(max-width:790px){.question{grid-template-columns:1fr;gap:9px}.question legend{float:none}.choice-row{justify-content:flex-start}.option-fields{grid-template-columns:repeat(4,minmax(0,1fr))}.option-fields .field-name{grid-column:1/-1}}
+@media(max-width:550px){.masthead-inner{padding:17px 16px}.header-right{font-size:9px;text-align:right;max-width:125px}.wordmark{font-size:18px}.page{padding:0 13px 24px}.intro{padding:34px 4px 16px}.intro h1{font-size:29px}.intro>p:not(.eyebrow){font-size:14px}.form-section,.result-section{padding:21px 17px}.section-heading{gap:11px}.section-heading h2{font-size:18px}.scale-guide{font-size:10px;gap:9px;flex-wrap:wrap}.form-grid{grid-template-columns:1fr}.field-full{grid-column:auto}.option-fields{grid-template-columns:1fr 1fr;gap:11px}.option-fields .field-name{grid-column:1/-1}.question legend{font-size:12px}.choice span{width:36px;height:36px}.priority{gap:12px}.priority-entry{font-size:10px}.priority input{width:57px}.primary-button{width:100%}footer{flex-direction:column;gap:6px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+</style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="wordmark" href="#top"><span class="brand-square" aria-hidden="true"></span><span>GPU-SHIFT</span></a>
+      <span class="header-right">RESEARCH PROTOTYPE · VERSION 0.3</span>
+    </div>
+  </header>
+  <main id="top" class="page">
+    <div class="intro">
+      <p class="eyebrow">DECISION SUPPORT / PILOT INTERFACE</p>
+      <h1>Technology decision assessment</h1>
+      <p>Welcome to GPU-SHIFT!
+
+Have you ever found yourself unsure whether to buy a piece of technology now, wait for a better opportunity, or consider an alternative? With changing prices, limited availability, and so many options, making the right decision can sometimes feel overwhelming.
+
+That's where GPU-SHIFT comes in. We're exploring how psychology and mathematics can work together to make these decisions easier. By understanding your personal circumstances, what matters most to you, and how you respond to uncertainty, we'll help you compare your options and find a choice that best fits your needs and priorities.
+
+Simply answer a few questions, tell us what you're considering, and explore your personalised suggestion. There's no universally perfect decision, but there may be one that makes more sense for you.
+
+GPU-SHIFT is currently an experimental research prototype. Its recommendations are illustrative and have not yet been scientifically validated.</p>
+      <div class="notice" role="note"><strong>Prototype website.</strong> This is an illustrative, unvalidated research demonstration. It does not provide financial advice or predict future prices. No answers are uploaded or stored.</div>
+    </div>
+
+    <section class="form-section" aria-labelledby="a-title">
+      <div class="section-heading"><span class="section-number">A</span><div><h2 id="a-title">Psychological decision experience</h2><p>Indicate how much you agree with each statement. There are no right or wrong answers.</p></div></div>
+      <div class="scale-guide"><span>1 = Strongly disagree</span><span>3 = Neither</span><span>5 = Strongly agree</span></div>
+      <div id="psychQuestions"></div>
+      <p class="small-note">These nine statements are illustrative examples of proposed psychological items, not a validated scale.</p>
+    </section>
+
+    <section class="form-section" aria-labelledby="b-title">
+      <div class="section-heading"><span class="section-number">B</span><div><h2 id="b-title">Your situation</h2><p>Tell us what you need and what is non-negotiable.</p></div></div>
+      <div class="form-grid">
+        <label class="field field-full"><span>What are you deciding?</span><input id="decision" type="text" maxlength="200" value="Should I purchase a €600 GPU or choose another option?" /></label>
+        <label class="field"><span>Maximum budget (€)</span><input id="budget" type="number" min="1" max="100000" step="10" value="650" /></label>
+        <label class="field"><span>Latest acceptable availability</span><select id="deadline"><option value="0">No strict deadline</option><option value="7">Within 7 days</option><option value="14">Within 14 days</option><option value="30" selected>Within 30 days</option><option value="60">Within 60 days</option></select></label>
+        <label class="field"><span>Main purpose</span><select id="purpose"><option>Study</option><option>Work</option><option selected>Gaming</option><option>Graphics / video editing</option><option>Other</option></select></label>
+        <label class="field"><span>Usable temporary alternative?</span><select id="backup"><option value="yes">Yes</option><option value="no" selected>No</option><option value="unsure">Not sure</option></select></label>
+        <label class="field field-full"><span>Essential technical requirements (optional)</span><input id="requirements" type="text" placeholder="For example: compatible with my software and power supply" maxlength="220" /></label>
+      </div>
+      <div class="subheading"><h3>Options you are considering</h3><p>Enter real products or clearly defined strategies. Edit the examples below, or add another option.</p></div>
+      <div id="options" class="option-list"></div>
+      <button type="button" class="secondary-button" id="addOption">+ Add an option</button>
+      <p class="small-note">“Fit” is your provisional assessment of how well the option meets your needs (0–100). “Potential loss” is the amount you might not recover if you change your decision. The prototype cannot verify these values.</p>
+    </section>
+
+    <section class="form-section" aria-labelledby="c-title">
+      <div class="section-heading"><span class="section-number">C</span><div><h2 id="c-title">What matters most to you?</h2><p>Choose your most valuable improvement and give it 100 points. Rate the others relative to it.</p></div></div>
+      <div class="priorities">
+        <label class="priority"><span><strong>Affordability</strong><small>Price improves from €800 to €400</small></span><span class="priority-entry"><input id="pCost" type="number" min="0" max="100" step="5" value="100" aria-label="Affordability points" /> points</span></label>
+        <label class="priority"><span><strong>Timely access</strong><small>Waiting improves from 8 weeks to 1 week</small></span><span class="priority-entry"><input id="pTime" type="number" min="0" max="100" step="5" value="60" aria-label="Timeliness points" /> points</span></label>
+        <label class="priority"><span><strong>Functional adequacy</strong><small>Fit improves from 40/100 to 100/100</small></span><span class="priority-entry"><input id="pFunction" type="number" min="0" max="100" step="5" value="40" aria-label="Functional adequacy points" /> points</span></label>
+        <label class="priority"><span><strong>Reversibility</strong><small>Potential unrecoverable loss falls from €200 to €0</small></span><span class="priority-entry"><input id="pReverse" type="number" min="0" max="100" step="5" value="30" aria-label="Reversibility points" /> points</span></label>
+      </div>
+      <p class="small-note">The reference improvements are illustrative, matching this prototype's scoring rules. Final questionnaire content and scoring will require research validation.</p>
+      <div id="formError" role="alert" class="error" hidden></div>
+      <button type="button" class="primary-button" id="suggestBtn">View my suggestion <span aria-hidden="true">→</span></button>
+    </section>
+
+    <section class="result-section" id="result" aria-label="Decision suggestion" aria-live="polite">
+      <span class="result-label">RESULT</span>
+      <h2>Your suggestion will appear here.</h2>
+      <p>Complete the questionnaire above, then select “View my suggestion”.</p>
+    </section>
+    <footer><span>GPU-SHIFT · Independent research prototype</span><span>University-style presentation; not an official University of Milano-Bicocca service.</span></footer>
+  </main>
+<script>
+/* GPU-SHIFT university-style prototype, illustrative only. No validated coefficients. */
+(function(root,factory){const api=factory(); if(typeof module==='object'&&module.exports)module.exports=api; if(root)root.GPUShift=api;})(typeof window!=='undefined'?window:null,function(){
+'use strict';
+const clamp=x=>Math.max(0,Math.min(1,x));
+const constructs={uncertainty:[0,1,2],urgency:[3,4,5],regret:[6,7,8]};
+const notes={
+ uncertainty:'Your responses suggest uncertainty may be an important part of this decision. Separate what you know today from what you cannot predict, and check whether the option still meets your present requirements.',
+ urgency:'Your responses suggest you may be feeling pressure to decide quickly. Check whether the deadline you entered is a strict practical need or a feeling of urgency before committing.',
+ regret:'Your responses suggest concern about making a choice you might later regret. Compare the known trade-offs and reversibility of the options rather than treating future price changes as certain.',
+ general:'Review the option against your essential requirements, and check that the information you entered is accurate before making a purchase.'
+};
+function psychologicalReflection(answers){
+ if(!Array.isArray(answers)||answers.length!==9||answers.some(x=>!Number.isInteger(Number(x))||Number(x)<1||Number(x)>5))return{error:'Please answer all nine psychological questions.'};
+ const scores=Object.fromEntries(Object.entries(constructs).map(([name,indexes])=>[name,indexes.reduce((s,i)=>s+Number(answers[i]),0)/3]));
+ const ordered=Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+ const dominant=ordered[0][1]>=3.4?ordered[0][0]:'general';
+ return {scores,dominant,note:notes[dominant]};
+}
+function getWeights(points){
+ const keys=['cost','time','function','reversibility'];
+ const raw=keys.map(k=>Number(points?.[k]));
+ if(raw.some(x=>!Number.isFinite(x)||x<0||x>100))return{error:'Use numbers from 0 to 100 for your priorities.'};
+ if(Math.max(...raw)!==100)return{error:'Give your most valuable improvement 100 points.'};
+ const total=raw.reduce((a,b)=>a+b,0);
+ return Object.fromEntries(keys.map((k,i)=>[k,raw[i]/total]));
+}
+function evaluate({budget,deadline,options,points,answers}){
+ const psych=psychologicalReflection(answers);if(psych.error)return{error:psych.error};
+ budget=Number(budget);deadline=Number(deadline);
+ if(!Number.isFinite(budget)||budget<=0||budget>100000)return{error:'Enter a valid maximum budget.'};
+ if(!Number.isFinite(deadline)||deadline<0||deadline>365)return{error:'Select a valid deadline.'};
+ if(!Array.isArray(options)||options.length<1)return{error:'Please enter at least one option.'};
+ const weights=getWeights(points);if(weights.error)return{error:weights.error};
+ const scored=options.map((opt,index)=>{
+  const name=String(opt.name??'').trim();
+  const price=Number(opt.price),days=Number(opt.days),fit=Number(opt.fit),loss=Number(opt.loss);
+  const invalid=!name||![price,days,fit,loss].every(Number.isFinite)||price<0||days<0||days>365||fit<0||fit>100||loss<0||loss>100000;
+  const reasons=[];
+  if(invalid)reasons.push('Incomplete option details');
+  if(!invalid&&price>budget)reasons.push('Above your budget');
+  if(!invalid&&deadline>0&&days>deadline)reasons.push('After your deadline');
+  if(opt.compatible===false)reasons.push('Does not meet essential requirements');
+  // Anchors mirror Section C illustration: €800 -> €400; 56d -> 7d; fit 40 -> 100; loss €200 -> €0.
+  const values=invalid?null:{
+    cost:clamp((800-price)/400),
+    time:clamp((56-days)/49),
+    function:clamp((fit-40)/60),
+    reversibility:clamp((200-loss)/200)
+  };
+  const score=values?Object.keys(weights).reduce((s,k)=>s+weights[k]*values[k],0):null;
+  return{...opt,index,name,price,days,fit,loss,feasible:reasons.length===0,reasons,values,score};
+ });
+ const eligible=scored.filter(o=>o.feasible).sort((a,b)=>b.score-a.score||a.index-b.index);
+ const winner=eligible[0]||null;
+ const ties=winner?eligible.filter(o=>Math.abs(o.score-winner.score)<0.00001):[];
+ return {psych,weights,scored,eligible,winner,ties};
+}
+return {evaluate,getWeights,psychologicalReflection};
+});
+
+</script>
+<script>
+/* Simple, accessible assessment flow. The A-section changes explanatory advice only, not numerical rankings. */
+(()=>{'use strict';
+const $=s=>document.querySelector(s), E=window.GPUShift;
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const questionGroups=[
+ {title:'Uncertainty sensitivity',items:[
+  'I find it difficult to decide when the future availability of a product is uncertain.',
+  'I feel uncomfortable buying when I cannot tell whether prices will change soon.',
+  'Uncertain market conditions sometimes make me delay a decision I need to make.']},
+ {title:'Perceived urgency',items:[
+  'When technology is needed for work or study, I feel pressure to decide quickly.',
+  'A delay in obtaining the technology would create significant difficulties for me.',
+  'When my current device no longer meets my needs, I feel I must act immediately.']},
+ {title:'Anticipated regret',items:[
+  'I worry that I may regret buying now if prices fall later.',
+  'I worry that I may regret waiting if availability becomes worse.',
+  'I imagine how disappointed I would feel if a better option became available after I decided.']}
+];
+let options=[
+ {id:1,name:'Buy chosen GPU',price:600,days:2,fit:92,loss:140,compatible:true},
+ {id:2,name:'Buy refurbished GPU',price:450,days:7,fit:80,loss:75,compatible:true},
+ {id:3,name:'Buy a lower-cost substitute',price:400,days:10,fit:67,loss:100,compatible:true}
+];let seq=4,computed=false;
+function renderPsych(){let idx=0;$('#psychQuestions').innerHTML=questionGroups.map(group=>`<div class="psych-group"><h3>${group.title}</h3>${group.items.map(item=>{const i=idx++;return `<fieldset class="question"><legend><span class="q-num">${String(i+1).padStart(2,'0')}</span>${esc(item)}</legend><div class="choice-row">${[1,2,3,4,5].map(v=>`<label class="choice"><input type="radio" name="psych${i}" value="${v}" aria-label="${v} out of 5 for question ${i+1}"><span>${v}</span></label>`).join('')}</div></fieldset>`}).join('')}</div>`).join('');}
+function optionMarkup(o,index){return `<div class="option-card" data-id="${o.id}"><div class="option-top"><span class="option-index">OPTION ${index+1}</span><button class="remove" type="button" aria-label="Remove option ${index+1}">Remove</button></div><div class="option-fields"><label class="field field-name"><span>Option / strategy</span><input data-k="name" value="${esc(o.name)}" maxlength="100"></label><label class="field"><span>Cost (€)</span><input data-k="price" type="number" min="0" max="100000" value="${o.price}"></label><label class="field"><span>Available in (days)</span><input data-k="days" type="number" min="0" max="365" value="${o.days}"></label><label class="field"><span>Fit (0–100)</span><input data-k="fit" type="number" min="0" max="100" value="${o.fit}"></label><label class="field"><span>Potential loss (€)</span><input data-k="loss" type="number" min="0" max="100000" value="${o.loss}"></label></div><label class="compatible"><input data-k="compatible" type="checkbox" ${o.compatible?'checked':''}> Meets my essential technical requirements</label></div>`;}
+function renderOptions(){$('#options').innerHTML=options.map(optionMarkup).join('');}
+function values(){return {budget:$('#budget').value,deadline:$('#deadline').value,options,points:{cost:$('#pCost').value,time:$('#pTime').value,function:$('#pFunction').value,reversibility:$('#pReverse').value},answers:Array.from({length:9},(_,i)=>document.querySelector(`input[name="psych${i}"]:checked`)?.value||null)};}
+function error(msg){$('#formError').hidden=false;$('#formError').textContent=msg;$('#formError').scrollIntoView({block:'center',behavior:'smooth'});}
+function clearError(){$('#formError').hidden=true;$('#formError').textContent='';}
+function money(n){return new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);}
+function display(){clearError();const result=E.evaluate(values());if(result.error){error(result.error);return;}const r=$('#result');let html='<span class="result-label">ILLUSTRATIVE SUGGESTION</span>';
+ if(!result.winner){html+='<h2>No eligible option yet</h2><p>None of the options entered meets the stated budget, deadline and technical requirements. Review the options or adjust a requirement only if it is genuinely flexible.</p>';}else{
+ const w=result.winner;const tied=result.ties.length>1;const prioritised=Object.entries(result.weights).sort((a,b)=>b[1]-a[1])[0][0];const labels={cost:'affordability',time:'timely access',function:'functional adequacy',reversibility:'reversibility'};
+ html+=`<p class="result-intro">Based on the information you entered, the leading ${tied?'options are':'option is'}:</p><h2>${esc(tied?result.ties.map(x=>x.name).join(' / '):w.name)}</h2><div class="result-details">${tied?'':`<span>${money(w.price)}</span><span>${w.days===0?'Available now':`Available in ${w.days} days`}</span><span>Match score ${(w.score*100).toFixed(0)}/100</span>`}</div><p>${tied?'These alternatives have the same calculated value. Review the known trade-offs rather than forcing a single answer.':`This option has the highest weighted score among ${result.eligible.length} eligible alternative${result.eligible.length===1?'':'s'}. Your strongest priority is ${labels[prioritised]}.`}</p>`;
+ }
+ html+=`<div class="reflect"><h3>A note based on your questionnaire responses</h3><p>${esc(result.psych.note)}</p></div>`;
+ html+='<p class="disclaimer">This is a prototype demonstration. Psychological answers shape the reflection above, but do not change the numerical option ranking. Neither questionnaire items nor model scores have been validated. The website does not predict future prices or verify product specifications.</p>';
+ r.innerHTML=html;computed=true;r.scrollIntoView({block:'start',behavior:'smooth'});
+}
+function stale(){if(computed){computed=false;const s=$('#result');s.innerHTML='<span class="result-label">RESULT</span><h2>Inputs changed</h2><p>Select “View my suggestion” again to update the result.</p>';}}
+$('#options').addEventListener('input',e=>{const card=e.target.closest('[data-id]');if(!card)return;const o=options.find(x=>x.id===Number(card.dataset.id));const k=e.target.dataset.k;if(!o||!k)return;o[k]=k==='compatible'?e.target.checked:e.target.value;stale();});
+$('#options').addEventListener('change',e=>{if(e.target.dataset.k!=='compatible')return;const card=e.target.closest('[data-id]');const o=options.find(x=>x.id===Number(card.dataset.id));if(o){o.compatible=e.target.checked;stale();}});
+$('#options').addEventListener('click',e=>{if(!e.target.closest('.remove'))return;if(options.length===1){error('Please keep at least one option.');return;}const id=Number(e.target.closest('[data-id]').dataset.id);options=options.filter(x=>x.id!==id);renderOptions();stale();});
+$('#addOption').addEventListener('click',()=>{if(options.length>=5){error('Please use up to five options in this prototype.');return;}clearError();options.push({id:seq++,name:'Another option',price:500,days:7,fit:75,loss:100,compatible:true});renderOptions();stale();$('#options').lastElementChild.querySelector('[data-k="name"]').focus();});
+for(const input of document.querySelectorAll('input,select'))input.addEventListener('change',stale);
+$('#suggestBtn').addEventListener('click',display);
+renderPsych();renderOptions();
+})();
+
+</script>
+</body>
+</html>
