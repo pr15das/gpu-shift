@@ -1,11 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
-<meta name="theme-color" content="#8d1938">
-<meta name="description" content="GPU-SHIFT: an interactive, unvalidated research prototype for technology decisions.">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light" name="color-scheme"/>
+<meta content="#8d1938" name="theme-color"/>
+<meta content="GPU-SHIFT: an interactive, unvalidated research prototype for technology decisions." name="description"/>
 <title>GPU-SHIFT | Research prototype</title>
 <style>
 :root { --accent:#8d1938; --accent-hover:#6a142c; --ink:#242831; --body:#4e5560; --muted:#6b717b; --line:#dce0e5; --page:#f7f8fa; --white:#fff; --soft:#f2f4f6; }
@@ -84,160 +85,179 @@ footer{padding:22px 0;color:#7a8189;font-size:11px;display:flex;justify-content:
 @media(max-width:790px){.option-fields{grid-template-columns:repeat(4,minmax(0,1fr))}.option-fields .name-field{grid-column:1/-1}.question{grid-template-columns:1fr;gap:8px}.question .response{max-width:280px}}
 @media(max-width:550px){.header-content{padding:14px 16px}.header-note{font-size:9px}.logo{font-size:19px}main{padding:0 13px 20px}.hero{padding:30px 2px 12px}h1{font-size:29px}.panel{padding:20px 16px}.section-title h2{font-size:18px}.field-grid{grid-template-columns:1fr}.full{grid-column:auto}.option-fields{grid-template-columns:1fr 1fr}.option-fields .name-field{grid-column:1/-1}.priority{grid-template-columns:minmax(0,1fr) 102px}.priority input{width:65px}.question .response{max-width:none}footer{flex-direction:column}.primary{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Read the original paper panel */
+.paper-links{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:17px 0 8px}
+.paper-open{font:700 12px/1.3 Arial,Helvetica,sans-serif;background:#fff;border:1px solid #8d1938;color:#8d1938;border-radius:3px;padding:11px 15px;cursor:pointer}
+.paper-open:hover{background:#fbf0f3}
+.paper-open:focus-visible,.paper-close:focus-visible{outline:3px solid #dca0b2;outline-offset:3px}
+.paper-open--quiet{border-color:#e0e3e7;font-size:11px;white-space:nowrap;padding:7px 10px}
+.paper-overlay{position:fixed;inset:0;background:#f7f8fa;z-index:9999;display:flex;flex-direction:column}
+.paper-overlay[hidden]{display:none!important}
+body.paper-mode{overflow:hidden}
+.paper-toolbar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:13px;flex-wrap:wrap;background:#fff;border-top:5px solid #8d1938;border-bottom:1px solid #dce0e5;padding:11px 22px}
+.paper-toolbar-label{font-weight:750;font-size:14px;color:#242831}
+.paper-toolbar-links{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.paper-close,.paper-pdf-link{font:700 12px Arial,Helvetica,sans-serif;background:#fff;border:1px solid #ced2d8;border-radius:3px;padding:10px 13px;color:#323943;text-decoration:none;cursor:pointer}
+.paper-close{background:#8d1938;border-color:#8d1938;color:#fff}
+.paper-close:hover{background:#6a142c}
+.paper-pdf-link:hover{color:#8d1938;border-color:#8d1938}
+.paper-frame{display:block;width:100%;height:100%;border:0;background:#f7f8fa;flex:1;min-height:0}
+@media(max-width:550px){.paper-toolbar{padding:10px 12px}.paper-toolbar-label{font-size:12px}.paper-close,.paper-pdf-link{font-size:11px;padding:9px 10px}.paper-open--quiet{margin-top:7px}}
 </style>
 </head>
 <body>
-<header><div class="header-content"><a href="#top" class="logo"><span class="logo-mark" aria-hidden="true"></span>GPU-SHIFT</a><span class="header-note">INDEPENDENT RESEARCH PROTOTYPE · VERSION 0.4</span></div></header>
+<header><div class="header-content"><a class="logo" href="#top"><span aria-hidden="true" class="logo-mark"></span>GPU-SHIFT</a><span class="header-note">INDEPENDENT RESEARCH PROTOTYPE · VERSION 0.4</span></div></header>
 <main id="top">
 <section class="hero">
-  <p class="eyebrow">Technology decision support</p>
-  <h1>Welcome to GPU-SHIFT</h1>
-  <p>Have you ever wondered whether to buy a piece of technology now, wait, or consider something different? When prices and availability change, finding a sensible option can be difficult.</p>
-  <p>We’re exploring how psychology and mathematics can help you compare your choices. Tell us a little about how you make decisions, your circumstances, and what matters most to you. We’ll show you an illustrative suggestion based on the options you enter.</p>
-  <div class="notice"><strong>Prototype website:</strong> GPU-SHIFT is an experimental and unvalidated research demonstration. It does not predict future market prices or provide financial advice. Your answers are processed in this browser and are not sent to a server.</div>
+<p class="eyebrow">Technology decision support</p>
+<h1>Welcome to GPU-SHIFT</h1>
+<p>Have you ever wondered whether to buy a piece of technology now, wait, or consider something different? When prices and availability change, finding a sensible option can be difficult.</p>
+<p>We’re exploring how psychology and mathematics can help you compare your choices. Tell us a little about how you make decisions, your circumstances, and what matters most to you. We’ll show you an illustrative suggestion based on the options you enter.</p>
+<div class="paper-links"><button class="paper-open" data-paper-source="top" type="button">Read the full research paper ↗</button></div><div class="notice"><strong>Prototype website:</strong> GPU-SHIFT is an experimental and unvalidated research demonstration. It does not predict future market prices or provide financial advice. Your answers are processed in this browser and are not sent to a server.</div>
 </section>
-<form id="shiftForm" novalidate>
-  <section class="panel" aria-labelledby="section-a">
-    <div class="section-title"><span class="section-letter">A</span><div><h2 id="section-a">How do you feel about this decision?</h2><p>Choose an answer for each of the nine statements below. There are no right or wrong answers.</p></div></div>
-    <div class="scale"><span>1 = Strongly disagree</span><span>3 = Neither agree nor disagree</span><span>5 = Strongly agree</span></div>
-    <div class="progress-line"><span>Psychological questions answered</span><strong id="questionProgress" aria-live="polite">0 of 9</strong></div>
-    <div class="meter" role="progressbar" id="progressMeter" aria-label="Psychological questionnaire completed" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0"><div id="progressFill"></div></div>
-    <div class="question-group"><h3>Uncertainty sensitivity</h3>
+<form id="shiftForm" novalidate="">
+<section aria-labelledby="section-a" class="panel">
+<div class="section-title"><span class="section-letter">A</span><div><h2 id="section-a">How do you feel about this decision?</h2><p>Choose an answer for each of the nine statements below. There are no right or wrong answers.</p></div><button class="paper-open paper-open--quiet" data-paper-source="section-a" type="button">Read the paper ↗</button></div>
+<div class="scale"><span>1 = Strongly disagree</span><span>3 = Neither agree nor disagree</span><span>5 = Strongly agree</span></div>
+<div class="progress-line"><span>Psychological questions answered</span><strong aria-live="polite" id="questionProgress">0 of 9</strong></div>
+<div aria-label="Psychological questionnaire completed" aria-valuemax="9" aria-valuemin="0" aria-valuenow="0" class="meter" id="progressMeter" role="progressbar"><div id="progressFill"></div></div>
+<div class="question-group"><h3>Uncertainty sensitivity</h3>
 <label class="question" for="psych1">
-          <span class="statement"><span class="question-number">01</span> I find it difficult to decide when the future availability of a product is uncertain.</span>
-          <select class="response" id="psych1" name="psych1" aria-required="true">
-            <option value="">Select an answer</option>
-            <option value="1">1 — Strongly disagree</option>
-            <option value="2">2 — Disagree</option>
-            <option value="3">3 — Neither</option>
-            <option value="4">4 — Agree</option>
-            <option value="5">5 — Strongly agree</option>
-          </select>
-        </label>
+<span class="statement"><span class="question-number">01</span> I find it difficult to decide when the future availability of a product is uncertain.</span>
+<select aria-required="true" class="response" id="psych1" name="psych1">
+<option value="">Select an answer</option>
+<option value="1">1 — Strongly disagree</option>
+<option value="2">2 — Disagree</option>
+<option value="3">3 — Neither</option>
+<option value="4">4 — Agree</option>
+<option value="5">5 — Strongly agree</option>
+</select>
+</label>
 <label class="question" for="psych2">
-          <span class="statement"><span class="question-number">02</span> I feel uncomfortable buying when I cannot tell whether prices will change soon.</span>
-          <select class="response" id="psych2" name="psych2" aria-required="true">
-            <option value="">Select an answer</option>
-            <option value="1">1 — Strongly disagree</option>
-            <option value="2">2 — Disagree</option>
-            <option value="3">3 — Neither</option>
-            <option value="4">4 — Agree</option>
-            <option value="5">5 — Strongly agree</option>
-          </select>
-        </label>
+<span class="statement"><span class="question-number">02</span> I feel uncomfortable buying when I cannot tell whether prices will change soon.</span>
+<select aria-required="true" class="response" id="psych2" name="psych2">
+<option value="">Select an answer</option>
+<option value="1">1 — Strongly disagree</option>
+<option value="2">2 — Disagree</option>
+<option value="3">3 — Neither</option>
+<option value="4">4 — Agree</option>
+<option value="5">5 — Strongly agree</option>
+</select>
+</label>
 <label class="question" for="psych3">
-          <span class="statement"><span class="question-number">03</span> Uncertain market conditions sometimes make me delay a decision I need to make.</span>
-          <select class="response" id="psych3" name="psych3" aria-required="true">
-            <option value="">Select an answer</option>
-            <option value="1">1 — Strongly disagree</option>
-            <option value="2">2 — Disagree</option>
-            <option value="3">3 — Neither</option>
-            <option value="4">4 — Agree</option>
-            <option value="5">5 — Strongly agree</option>
-          </select>
-        </label>
+<span class="statement"><span class="question-number">03</span> Uncertain market conditions sometimes make me delay a decision I need to make.</span>
+<select aria-required="true" class="response" id="psych3" name="psych3">
+<option value="">Select an answer</option>
+<option value="1">1 — Strongly disagree</option>
+<option value="2">2 — Disagree</option>
+<option value="3">3 — Neither</option>
+<option value="4">4 — Agree</option>
+<option value="5">5 — Strongly agree</option>
+</select>
+</label>
 </div>
 <div class="question-group"><h3>Perceived urgency</h3>
 <label class="question" for="psych4">
-          <span class="statement"><span class="question-number">04</span> When technology is needed for work or study, I feel pressure to decide quickly.</span>
-          <select class="response" id="psych4" name="psych4" aria-required="true">
-            <option value="">Select an answer</option>
-            <option value="1">1 — Strongly disagree</option>
-            <option value="2">2 — Disagree</option>
-            <option value="3">3 — Neither</option>
-            <option value="4">4 — Agree</option>
-            <option value="5">5 — Strongly agree</option>
-          </select>
-        </label>
+<span class="statement"><span class="question-number">04</span> When technology is needed for work or study, I feel pressure to decide quickly.</span>
+<select aria-required="true" class="response" id="psych4" name="psych4">
+<option value="">Select an answer</option>
+<option value="1">1 — Strongly disagree</option>
+<option value="2">2 — Disagree</option>
+<option value="3">3 — Neither</option>
+<option value="4">4 — Agree</option>
+<option value="5">5 — Strongly agree</option>
+</select>
+</label>
 <label class="question" for="psych5">
-          <span class="statement"><span class="question-number">05</span> A delay in obtaining the technology would create significant difficulties for me.</span>
-          <select class="response" id="psych5" name="psych5" aria-required="true">
-            <option value="">Select an answer</option>
-            <option value="1">1 — Strongly disagree</option>
-            <option value="2">2 — Disagree</option>
-            <option value="3">3 — Neither</option>
-            <option value="4">4 — Agree</option>
-            <option value="5">5 — Strongly agree</option>
-          </select>
-        </label>
+<span class="statement"><span class="question-number">05</span> A delay in obtaining the technology would create significant difficulties for me.</span>
+<select aria-required="true" class="response" id="psych5" name="psych5">
+<option value="">Select an answer</option>
+<option value="1">1 — Strongly disagree</option>
+<option value="2">2 — Disagree</option>
+<option value="3">3 — Neither</option>
+<option value="4">4 — Agree</option>
+<option value="5">5 — Strongly agree</option>
+</select>
+</label>
 <label class="question" for="psych6">
-          <span class="statement"><span class="question-number">06</span> When my current device no longer meets my needs, I feel I must act immediately.</span>
-          <select class="response" id="psych6" name="psych6" aria-required="true">
-            <option value="">Select an answer</option>
-            <option value="1">1 — Strongly disagree</option>
-            <option value="2">2 — Disagree</option>
-            <option value="3">3 — Neither</option>
-            <option value="4">4 — Agree</option>
-            <option value="5">5 — Strongly agree</option>
-          </select>
-        </label>
+<span class="statement"><span class="question-number">06</span> When my current device no longer meets my needs, I feel I must act immediately.</span>
+<select aria-required="true" class="response" id="psych6" name="psych6">
+<option value="">Select an answer</option>
+<option value="1">1 — Strongly disagree</option>
+<option value="2">2 — Disagree</option>
+<option value="3">3 — Neither</option>
+<option value="4">4 — Agree</option>
+<option value="5">5 — Strongly agree</option>
+</select>
+</label>
 </div>
 <div class="question-group"><h3>Anticipated regret</h3>
 <label class="question" for="psych7">
-          <span class="statement"><span class="question-number">07</span> I worry that I may regret buying now if prices fall later.</span>
-          <select class="response" id="psych7" name="psych7" aria-required="true">
-            <option value="">Select an answer</option>
-            <option value="1">1 — Strongly disagree</option>
-            <option value="2">2 — Disagree</option>
-            <option value="3">3 — Neither</option>
-            <option value="4">4 — Agree</option>
-            <option value="5">5 — Strongly agree</option>
-          </select>
-        </label>
+<span class="statement"><span class="question-number">07</span> I worry that I may regret buying now if prices fall later.</span>
+<select aria-required="true" class="response" id="psych7" name="psych7">
+<option value="">Select an answer</option>
+<option value="1">1 — Strongly disagree</option>
+<option value="2">2 — Disagree</option>
+<option value="3">3 — Neither</option>
+<option value="4">4 — Agree</option>
+<option value="5">5 — Strongly agree</option>
+</select>
+</label>
 <label class="question" for="psych8">
-          <span class="statement"><span class="question-number">08</span> I worry that I may regret waiting if availability becomes worse.</span>
-          <select class="response" id="psych8" name="psych8" aria-required="true">
-            <option value="">Select an answer</option>
-            <option value="1">1 — Strongly disagree</option>
-            <option value="2">2 — Disagree</option>
-            <option value="3">3 — Neither</option>
-            <option value="4">4 — Agree</option>
-            <option value="5">5 — Strongly agree</option>
-          </select>
-        </label>
+<span class="statement"><span class="question-number">08</span> I worry that I may regret waiting if availability becomes worse.</span>
+<select aria-required="true" class="response" id="psych8" name="psych8">
+<option value="">Select an answer</option>
+<option value="1">1 — Strongly disagree</option>
+<option value="2">2 — Disagree</option>
+<option value="3">3 — Neither</option>
+<option value="4">4 — Agree</option>
+<option value="5">5 — Strongly agree</option>
+</select>
+</label>
 <label class="question" for="psych9">
-          <span class="statement"><span class="question-number">09</span> I imagine how disappointed I would feel if a better option became available after I decided.</span>
-          <select class="response" id="psych9" name="psych9" aria-required="true">
-            <option value="">Select an answer</option>
-            <option value="1">1 — Strongly disagree</option>
-            <option value="2">2 — Disagree</option>
-            <option value="3">3 — Neither</option>
-            <option value="4">4 — Agree</option>
-            <option value="5">5 — Strongly agree</option>
-          </select>
-        </label>
+<span class="statement"><span class="question-number">09</span> I imagine how disappointed I would feel if a better option became available after I decided.</span>
+<select aria-required="true" class="response" id="psych9" name="psych9">
+<option value="">Select an answer</option>
+<option value="1">1 — Strongly disagree</option>
+<option value="2">2 — Disagree</option>
+<option value="3">3 — Neither</option>
+<option value="4">4 — Agree</option>
+<option value="5">5 — Strongly agree</option>
+</select>
+</label>
 </div>
-    <p class="note">These questions are provisional examples from the research proposal, not a validated psychological scale.</p>
-  </section>
-  <section class="panel" aria-labelledby="section-b">
-    <div class="section-title"><span class="section-letter">B</span><div><h2 id="section-b">Your situation</h2><p>Describe your needs and the choices you have available.</p></div></div>
-    <div class="field-grid">
-      <label class="field full"><span>What are you deciding?</span><input id="decision" value="Should I buy a new GPU or consider an alternative?" maxlength="180"></label>
-      <label class="field"><span>Maximum budget (€)</span><input id="budget" type="number" value="650" min="1" max="100000" step="any"></label>
-      <label class="field"><span>Latest acceptable availability</span><select id="deadline"><option value="0">No strict deadline</option><option value="7">Within 7 days</option><option value="14">Within 14 days</option><option value="30" selected>Within 30 days</option><option value="60">Within 60 days</option><option value="90">Within 90 days</option></select></label>
-      <label class="field"><span>Main purpose</span><select id="purpose"><option>Study</option><option>Work</option><option selected>Gaming</option><option>Graphics / video editing</option><option>Other</option></select></label>
-      <label class="field"><span>Usable temporary alternative?</span><select id="backup"><option value="yes">Yes</option><option value="no" selected>No</option><option value="unsure">Not sure</option></select></label>
-      <label class="field full"><span>Essential technical requirements (optional)</span><input id="requirements" placeholder="Example: compatible with my software and power supply" maxlength="220"></label>
-    </div>
-    <div class="subheading"><h3>Options you are considering</h3><p>Edit these examples or add your own options. Enter only what you know about each one.</p></div>
-    <div id="options" class="options"></div>
-    <button class="secondary" type="button" id="addOption">+ Add an option</button>
-    <p class="note">“Fit” is your own estimated suitability (0–100). “Potential loss” estimates what you could not recover if you changed your decision. These are not independently verified.</p>
-  </section>
-  <section class="panel" aria-labelledby="section-c">
-    <div class="section-title"><span class="section-letter">C</span><div><h2 id="section-c">What matters most to you?</h2><p>Give your most valuable improvement 100 points and rate the others between 0 and 100.</p></div></div>
-    <div class="priority"><div><strong>Affordability</strong><small>Example improvement: €800 down to €400</small></div><div><input id="pCost" type="number" min="0" max="100" step="any" value="100" aria-label="Affordability points"><span class="points-label"> points</span></div></div>
-    <div class="priority"><div><strong>Timely access</strong><small>Example improvement: eight weeks down to one week</small></div><div><input id="pTime" type="number" min="0" max="100" step="any" value="60" aria-label="Timely access points"><span class="points-label"> points</span></div></div>
-    <div class="priority"><div><strong>Functional adequacy</strong><small>Example improvement: fit of 40/100 up to 100/100</small></div><div><input id="pFunction" type="number" min="0" max="100" step="any" value="40" aria-label="Functional adequacy points"><span class="points-label"> points</span></div></div>
-    <div class="priority"><div><strong>Reversibility</strong><small>Example improvement: potential loss of €200 down to €0</small></div><div><input id="pReverse" type="number" min="0" max="100" step="any" value="30" aria-label="Reversibility points"><span class="points-label"> points</span></div></div>
-    <p class="note">These scoring ranges are illustrative and will require validation before a research trial.</p>
-    <div id="formError" class="error" role="alert" hidden></div>
-    <div class="button-row"><button class="primary" id="submitButton" type="submit">View my suggestion</button><span class="note">Your answers stay in this browser.</span></div>
-  </section>
+<p class="note">These questions are provisional examples from the research proposal, not a validated psychological scale.</p>
+</section>
+<section aria-labelledby="section-b" class="panel">
+<div class="section-title"><span class="section-letter">B</span><div><h2 id="section-b">Your situation</h2><p>Describe your needs and the choices you have available.</p></div><button class="paper-open paper-open--quiet" data-paper-source="section-b" type="button">Read the paper ↗</button></div>
+<div class="field-grid">
+<label class="field full"><span>What are you deciding?</span><input id="decision" maxlength="180" value="Should I buy a new GPU or consider an alternative?"/></label>
+<label class="field"><span>Maximum budget (€)</span><input id="budget" max="100000" min="1" step="any" type="number" value="650"/></label>
+<label class="field"><span>Latest acceptable availability</span><select id="deadline"><option value="0">No strict deadline</option><option value="7">Within 7 days</option><option value="14">Within 14 days</option><option selected="" value="30">Within 30 days</option><option value="60">Within 60 days</option><option value="90">Within 90 days</option></select></label>
+<label class="field"><span>Main purpose</span><select id="purpose"><option>Study</option><option>Work</option><option selected="">Gaming</option><option>Graphics / video editing</option><option>Other</option></select></label>
+<label class="field"><span>Usable temporary alternative?</span><select id="backup"><option value="yes">Yes</option><option selected="" value="no">No</option><option value="unsure">Not sure</option></select></label>
+<label class="field full"><span>Essential technical requirements (optional)</span><input id="requirements" maxlength="220" placeholder="Example: compatible with my software and power supply"/></label>
+</div>
+<div class="subheading"><h3>Options you are considering</h3><p>Edit these examples or add your own options. Enter only what you know about each one.</p></div>
+<div class="options" id="options"></div>
+<button class="secondary" id="addOption" type="button">+ Add an option</button>
+<p class="note">“Fit” is your own estimated suitability (0–100). “Potential loss” estimates what you could not recover if you changed your decision. These are not independently verified.</p>
+</section>
+<section aria-labelledby="section-c" class="panel">
+<div class="section-title"><span class="section-letter">C</span><div><h2 id="section-c">What matters most to you?</h2><p>Give your most valuable improvement 100 points and rate the others between 0 and 100.</p></div><button class="paper-open paper-open--quiet" data-paper-source="section-c" type="button">Read the paper ↗</button></div>
+<div class="priority"><div><strong>Affordability</strong><small>Example improvement: €800 down to €400</small></div><div><input aria-label="Affordability points" id="pCost" max="100" min="0" step="any" type="number" value="100"/><span class="points-label"> points</span></div></div>
+<div class="priority"><div><strong>Timely access</strong><small>Example improvement: eight weeks down to one week</small></div><div><input aria-label="Timely access points" id="pTime" max="100" min="0" step="any" type="number" value="60"/><span class="points-label"> points</span></div></div>
+<div class="priority"><div><strong>Functional adequacy</strong><small>Example improvement: fit of 40/100 up to 100/100</small></div><div><input aria-label="Functional adequacy points" id="pFunction" max="100" min="0" step="any" type="number" value="40"/><span class="points-label"> points</span></div></div>
+<div class="priority"><div><strong>Reversibility</strong><small>Example improvement: potential loss of €200 down to €0</small></div><div><input aria-label="Reversibility points" id="pReverse" max="100" min="0" step="any" type="number" value="30"/><span class="points-label"> points</span></div></div>
+<p class="note">These scoring ranges are illustrative and will require validation before a research trial.</p>
+<div class="error" hidden="" id="formError" role="alert"></div>
+<div class="button-row"><button class="primary" id="submitButton" type="submit">View my suggestion</button><span class="note">Your answers stay in this browser.</span></div>
+</section>
 </form>
-<section class="panel result" id="result" tabindex="-1" aria-live="polite" aria-label="Decision suggestion"><span class="result-label">YOUR RESULT</span><h2>Your suggestion will appear here</h2><p>Complete Sections A, B and C, then select “View my suggestion”.</p></section>
+<section aria-label="Decision suggestion" aria-live="polite" class="panel result" id="result" tabindex="-1"><span class="result-label">YOUR RESULT</span><h2>Your suggestion will appear here</h2><p>Complete Sections A, B and C, then select “View my suggestion”.</p></section>
 <footer><span>GPU-SHIFT · Independent research prototype</span><span>University-inspired design; not an official university service.</span></footer>
-</main>
+</main><div aria-hidden="true" aria-label="Read the full GPU-SHIFT research paper" aria-modal="true" class="paper-overlay" hidden="" id="paperOverlay" role="dialog"><div class="paper-toolbar"><span class="paper-toolbar-label">GPU-SHIFT / Original research paper</span><div class="paper-toolbar-links"><a class="paper-pdf-link" href="gpu-shift-original-paper.pdf" rel="noopener" target="_blank">Original PDF ↗</a><button class="paper-close" id="closePaper" type="button">← Back to questionnaire</button></div></div><iframe class="paper-frame" id="paperFrame" loading="lazy" title="GPU-SHIFT full research paper"></iframe></div>
 <script>
 (()=>{'use strict';
 const byId=id=>document.getElementById(id);
@@ -289,5 +309,41 @@ form.addEventListener('submit',event=>{event.preventDefault();clearError();quest
 progress();
 })();
 </script>
-</body>
+<script>
+(function(){
+  'use strict';
+  const overlay=document.getElementById('paperOverlay');
+  const frame=document.getElementById('paperFrame');
+  const back=document.getElementById('closePaper');
+  let previousFocus=null;
+  function openPaper(){
+    previousFocus=document.activeElement;
+    // The questionnaire remains in the page, preserving all typed answers and position.
+    overlay.hidden=false;
+    overlay.setAttribute('aria-hidden','false');
+    document.body.classList.add('paper-mode');
+    if(!frame.getAttribute('src'))frame.src='paper.html?embed=1';
+    back.focus({preventScroll:true});
+  }
+  function closePaper(){
+    overlay.hidden=true;
+    overlay.setAttribute('aria-hidden','true');
+    document.body.classList.remove('paper-mode');
+    if(previousFocus && document.contains(previousFocus))previousFocus.focus({preventScroll:true});
+  }
+  document.querySelectorAll('[data-paper-source]').forEach(button=>button.addEventListener('click',openPaper));
+  back.addEventListener('click',closePaper);
+  document.addEventListener('keydown',e=>{
+    if(overlay.hidden)return;
+    if(e.key==='Escape'){e.preventDefault();closePaper();}
+    // Keep keyboard focus inside the open paper panel.
+    if(e.key==='Tab'){
+      const elements=[...overlay.querySelectorAll('button,a')].filter(x=>x.offsetParent!==null);
+      if(!elements.length)return;
+      const first=elements[0],last=elements[elements.length-1];
+      if(e.shiftKey && document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first.focus();}
+    }
+  });
+})();</script></body>
 </html>
