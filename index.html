@@ -86,12 +86,11 @@ footer{padding:22px 0;color:#7a8189;font-size:11px;display:flex;justify-content:
 @media(max-width:550px){.header-content{padding:14px 16px}.header-note{font-size:9px}.logo{font-size:19px}main{padding:0 13px 20px}.hero{padding:30px 2px 12px}h1{font-size:29px}.panel{padding:20px 16px}.section-title h2{font-size:18px}.field-grid{grid-template-columns:1fr}.full{grid-column:auto}.option-fields{grid-template-columns:1fr 1fr}.option-fields .name-field{grid-column:1/-1}.priority{grid-template-columns:minmax(0,1fr) 102px}.priority input{width:65px}.question .response{max-width:none}footer{flex-direction:column}.primary{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
-/* Read the original paper panel */
+/* Full-proposal reader */
 .paper-links{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:17px 0 8px}
 .paper-open{font:700 12px/1.3 Arial,Helvetica,sans-serif;background:#fff;border:1px solid #8d1938;color:#8d1938;border-radius:3px;padding:11px 15px;cursor:pointer}
 .paper-open:hover{background:#fbf0f3}
 .paper-open:focus-visible,.paper-close:focus-visible{outline:3px solid #dca0b2;outline-offset:3px}
-.paper-open--quiet{border-color:#e0e3e7;font-size:11px;white-space:nowrap;padding:7px 10px}
 .paper-overlay{position:fixed;inset:0;background:#f7f8fa;z-index:9999;display:flex;flex-direction:column}
 .paper-overlay[hidden]{display:none!important}
 body.paper-mode{overflow:hidden}
@@ -103,7 +102,7 @@ body.paper-mode{overflow:hidden}
 .paper-close:hover{background:#6a142c}
 .paper-pdf-link:hover{color:#8d1938;border-color:#8d1938}
 .paper-frame{display:block;width:100%;height:100%;border:0;background:#f7f8fa;flex:1;min-height:0}
-@media(max-width:550px){.paper-toolbar{padding:10px 12px}.paper-toolbar-label{font-size:12px}.paper-close,.paper-pdf-link{font-size:11px;padding:9px 10px}.paper-open--quiet{margin-top:7px}}
+@media(max-width:550px){.paper-toolbar{padding:10px 12px}.paper-toolbar-label{font-size:12px}.paper-close,.paper-pdf-link{font-size:11px;padding:9px 10px}}
 </style>
 </head>
 <body>
@@ -112,13 +111,15 @@ body.paper-mode{overflow:hidden}
 <section class="hero">
 <p class="eyebrow">Technology decision support</p>
 <h1>Welcome to GPU-SHIFT</h1>
-<p>Have you ever wondered whether to buy a piece of technology now, wait, or consider something different? When prices and availability change, finding a sensible option can be difficult.</p>
-<p>We’re exploring how psychology and mathematics can help you compare your choices. Tell us a little about how you make decisions, your circumstances, and what matters most to you. We’ll show you an illustrative suggestion based on the options you enter.</p>
-<div class="paper-links"><button class="paper-open" data-paper-source="top" type="button">Read the full research paper ↗</button></div><div class="notice"><strong>Prototype website:</strong> GPU-SHIFT is an experimental and unvalidated research demonstration. It does not predict future market prices or provide financial advice. Your answers are processed in this browser and are not sent to a server.</div>
+<p>When technology suddenly becomes expensive, hard to obtain, or unsuitable for our needs, choosing whether to buy, wait, repair, or consider an alternative can be difficult. GPU-SHIFT explores whether psychology and simple, transparent mathematics can help people compare those choices more clearly.</p>
+<p><strong>About the project.</strong> GPU-SHIFT is a research proposal developed as part of the <em>Evaluation of Psychological Interventions</em> laboratory activity at the <strong>University of Milano-Bicocca</strong>. Starting with the GPU shortage, it investigates how people's circumstances, priorities, and responses to uncertainty might shape their decisions during sudden technological disruptions.</p>
+<p><strong>Aim and potential benefit.</strong> The study proposes to develop a questionnaire, create an explainable model that compares feasible choices, and test it in a randomised controlled trial against information-only decision support. The aim is to see whether personalised guidance helps people make more defensible decisions—not to assume it already does. If supported by the findings, the approach could help people understand trade-offs more clearly and may be adaptable to other technology decisions.</p>
+<p><strong>Explore the prototype.</strong> Answer illustrative questions about your decision-making, describe your situation, and enter the alternatives you are considering. The website will show how the proposed approach could generate a suggestion; it is not yet a validated psychological assessment or decision aid.</p>
+<div class="paper-links"><button class="paper-open" data-paper-source="top" type="button">Read the Full Proposal ↗</button></div><div class="notice"><strong>Prototype website:</strong> GPU-SHIFT is an experimental and unvalidated research demonstration. It does not predict future market prices or provide financial advice. Your answers are processed in this browser and are not sent to a server.</div>
 </section>
 <form id="shiftForm" novalidate="">
 <section aria-labelledby="section-a" class="panel">
-<div class="section-title"><span class="section-letter">A</span><div><h2 id="section-a">How do you feel about this decision?</h2><p>Choose an answer for each of the nine statements below. There are no right or wrong answers.</p></div><button class="paper-open paper-open--quiet" data-paper-source="section-a" type="button">Read the paper ↗</button></div>
+<div class="section-title"><span class="section-letter">A</span><div><h2 id="section-a">How do you feel about this decision?</h2><p>Choose an answer for each of the nine statements below. There are no right or wrong answers.</p></div></div>
 <div class="scale"><span>1 = Strongly disagree</span><span>3 = Neither agree nor disagree</span><span>5 = Strongly agree</span></div>
 <div class="progress-line"><span>Psychological questions answered</span><strong aria-live="polite" id="questionProgress">0 of 9</strong></div>
 <div aria-label="Psychological questionnaire completed" aria-valuemax="9" aria-valuemin="0" aria-valuenow="0" class="meter" id="progressMeter" role="progressbar"><div id="progressFill"></div></div>
@@ -230,7 +231,7 @@ body.paper-mode{overflow:hidden}
 <p class="note">These questions are provisional examples from the research proposal, not a validated psychological scale.</p>
 </section>
 <section aria-labelledby="section-b" class="panel">
-<div class="section-title"><span class="section-letter">B</span><div><h2 id="section-b">Your situation</h2><p>Describe your needs and the choices you have available.</p></div><button class="paper-open paper-open--quiet" data-paper-source="section-b" type="button">Read the paper ↗</button></div>
+<div class="section-title"><span class="section-letter">B</span><div><h2 id="section-b">Your situation</h2><p>Describe your needs and the choices you have available.</p></div></div>
 <div class="field-grid">
 <label class="field full"><span>What are you deciding?</span><input id="decision" maxlength="180" value="Should I buy a new GPU or consider an alternative?"/></label>
 <label class="field"><span>Maximum budget (€)</span><input id="budget" max="100000" min="1" step="any" type="number" value="650"/></label>
@@ -245,7 +246,7 @@ body.paper-mode{overflow:hidden}
 <p class="note">“Fit” is your own estimated suitability (0–100). “Potential loss” estimates what you could not recover if you changed your decision. These are not independently verified.</p>
 </section>
 <section aria-labelledby="section-c" class="panel">
-<div class="section-title"><span class="section-letter">C</span><div><h2 id="section-c">What matters most to you?</h2><p>Give your most valuable improvement 100 points and rate the others between 0 and 100.</p></div><button class="paper-open paper-open--quiet" data-paper-source="section-c" type="button">Read the paper ↗</button></div>
+<div class="section-title"><span class="section-letter">C</span><div><h2 id="section-c">What matters most to you?</h2><p>Give your most valuable improvement 100 points and rate the others between 0 and 100.</p></div></div>
 <div class="priority"><div><strong>Affordability</strong><small>Example improvement: €800 down to €400</small></div><div><input aria-label="Affordability points" id="pCost" max="100" min="0" step="any" type="number" value="100"/><span class="points-label"> points</span></div></div>
 <div class="priority"><div><strong>Timely access</strong><small>Example improvement: eight weeks down to one week</small></div><div><input aria-label="Timely access points" id="pTime" max="100" min="0" step="any" type="number" value="60"/><span class="points-label"> points</span></div></div>
 <div class="priority"><div><strong>Functional adequacy</strong><small>Example improvement: fit of 40/100 up to 100/100</small></div><div><input aria-label="Functional adequacy points" id="pFunction" max="100" min="0" step="any" type="number" value="40"/><span class="points-label"> points</span></div></div>
@@ -257,7 +258,7 @@ body.paper-mode{overflow:hidden}
 </form>
 <section aria-label="Decision suggestion" aria-live="polite" class="panel result" id="result" tabindex="-1"><span class="result-label">YOUR RESULT</span><h2>Your suggestion will appear here</h2><p>Complete Sections A, B and C, then select “View my suggestion”.</p></section>
 <footer><span>GPU-SHIFT · Independent research prototype</span><span>University-inspired design; not an official university service.</span></footer>
-</main><div aria-hidden="true" aria-label="Read the full GPU-SHIFT research paper" aria-modal="true" class="paper-overlay" hidden="" id="paperOverlay" role="dialog"><div class="paper-toolbar"><span class="paper-toolbar-label">GPU-SHIFT / Original research paper</span><div class="paper-toolbar-links"><a class="paper-pdf-link" href="gpu-shift-original-paper.pdf" rel="noopener" target="_blank">Original PDF ↗</a><button class="paper-close" id="closePaper" type="button">← Back to questionnaire</button></div></div><iframe class="paper-frame" id="paperFrame" loading="lazy" title="GPU-SHIFT full research paper"></iframe></div>
+</main><div aria-hidden="true" aria-label="Read the full GPU-SHIFT research proposal" aria-modal="true" class="paper-overlay" hidden="" id="paperOverlay" role="dialog"><div class="paper-toolbar"><span class="paper-toolbar-label">GPU-SHIFT / Full research proposal</span><div class="paper-toolbar-links"><a class="paper-pdf-link" href="gpu-shift-original-paper.pdf" rel="noopener" target="_blank">Original PDF ↗</a><button class="paper-close" id="closePaper" type="button">← Back to questionnaire</button></div></div><iframe class="paper-frame" id="paperFrame" loading="lazy" title="GPU-SHIFT full research proposal"></iframe></div>
 <script>
 (()=>{'use strict';
 const byId=id=>document.getElementById(id);
